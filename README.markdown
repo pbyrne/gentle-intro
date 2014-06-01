@@ -19,6 +19,7 @@ Getting Started
 1. Install [VirtualBox] and [Vagrant].
 2. Install the following Vagrant plugins:
     1. `vagrant plugin install vagrant-omnibus` (to install Chef on our servers)
+    1. `vagrant plugin install vagrant-berkshelf` (to tell Vagrant to manage cookbooks with Berkshelf)
     2. `vagrant plugin install vagrant-digitalocean` (to spin up production servers on Digital Ocean)
 3. `bundle` to install the gems you need.
 4. `vagrant up dev` to spin up a virtual server and install everything with Chef.
