@@ -26,6 +26,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.roles_path = "roles"
     chef.custom_config_path = ".chef/vagrant.rb"
     chef.add_role "base"
+    chef.add_role "web"
   end
 
   config.vm.define :dev do |dev|

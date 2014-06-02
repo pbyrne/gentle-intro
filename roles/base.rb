@@ -1,5 +1,6 @@
 name "base"
 
-run_list [
+run_list([
   "recipe[main]",
-]
+  "recipe[logrotate]",
+])
