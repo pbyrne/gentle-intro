@@ -1,0 +1,22 @@
+server {
+
+  server_name <%= @domain %>;
+  access_log <%= @log %>/access.log;
+  error_log <%= @log %>/error.log;
+
+  location / {
+
+    root <%= @public %>;
+
+    location ~ ^/(images|javascripts|stylesheets|assets)/ {
+      gzip_static on;
+      expires max;
+      add_header Cache-Control public;
+      # no need for etag with cache-control and expires properly set
+      add_header ETag "";
+    }
+
+  }
+
+}
+

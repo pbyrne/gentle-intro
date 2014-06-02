@@ -8,4 +8,5 @@ default_attributes({
 
 run_list([
   "recipe[nginx]",
+  "recipe[sites]",
 ])
