@@ -38,7 +38,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     dev.vm.network :forwarded_port, guest: 80, host: 8080
   end
 
-  config.vm.define :prod do |node|
+  config.vm.define :gentle do |node|
     node.vm.provider :digital_ocean do |provider, override|
       override.ssh.private_key_path = "~/.ssh/id_rsa"
       override.ssh.username = "pbyrne"
@@ -48,7 +48,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       provider.client_id = ENV["DIGITALOCEAN_CLIENT_ID"]
       provider.api_key = ENV["DIGITALOCEAN_API_KEY"]
       provider.image = "Ubuntu 14.04 x64"
-      provider.size = "2GB"
+      provider.size = "512MB"
     end
   end
 

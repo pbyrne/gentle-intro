@@ -3,7 +3,7 @@ directory "/var/www" do
   group node.site_owner
 end
 
-node.domains.each do |domain|
+node.domains.each do |domain, options|
 
   root = "/var/www/#{domain}"
 
@@ -23,14 +23,16 @@ node.domains.each do |domain|
     rotate 90 # keep 90 days of logs
   end
 
-  template "#{root}/public/index.html" do
-    source "index.html.erb"
-    user node.site_owner
-    group node.site_owner
-    not_if { File.exist? "#{root}/public/index.html" }
-    variables({
-      domain: domain,
-    })
+  if options[:type] == :static
+    template "#{root}/public/index.html" do
+      source "index.html.erb"
+      user node.site_owner
+      group node.site_owner
+      not_if { File.exist? "#{root}/public/index.html" }
+      variables({
+        domain: domain,
+      })
+    end
   end
 
   template "/etc/nginx/conf.d/#{domain}.conf" do
@@ -41,6 +43,7 @@ node.domains.each do |domain|
       domain: domain,
       public: "#{root}/public",
       log: "#{root}/log",
+      options: options,
     })
     notifies :reload, "service[nginx]", :delayed
   end
