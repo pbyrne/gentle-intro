@@ -27,6 +27,7 @@ node.domains.each do |domain|
     source "index.html.erb"
     user node.site_owner
     group node.site_owner
+    not_if { File.exist? "#{root}/public/index.html" }
     variables({
       domain: domain,
     })
