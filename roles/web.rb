@@ -1,9 +1,6 @@
 name "web"
 
 default_attributes({
-  nginx: {
-    gzip_comp_level: 9,
-  },
   nodejs: {
     install_method: "binary",
     version: "0.10.28",
@@ -12,6 +9,7 @@ default_attributes({
 })
 
 run_list([
+  "role[base]",
   "recipe[nginx]",
   "recipe[nodejs]",
   "recipe[sites]",

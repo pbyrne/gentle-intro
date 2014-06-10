@@ -25,7 +25,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.cookbooks_path = ["cookbooks", "site-cookbooks"]
     chef.roles_path = "roles"
     chef.custom_config_path = ".chef/vagrant.rb"
-    chef.add_role "base"
     chef.add_role "web"
   end
 
