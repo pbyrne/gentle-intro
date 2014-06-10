@@ -1,11 +1,11 @@
 DEPENDENCIES
   logrotate
   main
-    path: site-cookbooks/main
+    path: cookbooks/main
   nginx
   nodejs
   sites
-    path: site-cookbooks/sites
+    path: cookbooks/sites
 
 GRAPH
   apt (2.4.0)
@@ -32,6 +32,8 @@ GRAPH
     yum (~> 3.0)
     yum-epel (>= 0.0.0)
   sites (0.0.0)
+    logrotate (>= 0.0.0)
+    nginx (>= 0.0.0)
   yum (3.2.0)
   yum-epel (0.3.6)
     yum (~> 3.0)

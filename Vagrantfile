@@ -11,9 +11,7 @@ Vagrant.require_version ">= 1.5.0"
 end
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
-VAGRANTFILE_API_VERSION = "2"
-Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-
+Vagrant.configure("2") do |config|
 
   config.omnibus.chef_version = :latest
   config.berkshelf.enabled = true
@@ -22,7 +20,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # path, and data_bags path (all relative to this Vagrantfile), and adding
   # some recipes and/or roles.
   config.vm.provision "chef_solo" do |chef|
-    chef.cookbooks_path = ["cookbooks", "site-cookbooks"]
+    chef.cookbooks_path = "cookbooks"
     chef.roles_path = "roles"
     chef.custom_config_path = ".chef/vagrant.rb"
     chef.add_role "web"
@@ -43,7 +41,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       override.ssh.username = "pbyrne"
       override.vm.box = "digital_ocean"
       override.vm.box_url = "https://github.com/smdahlen/vagrant-digitalocean/raw/master/box/digital_ocean.box"
-
       provider.client_id = ENV["DIGITALOCEAN_CLIENT_ID"]
       provider.api_key = ENV["DIGITALOCEAN_API_KEY"]
       provider.image = "Ubuntu 14.04 x64"
