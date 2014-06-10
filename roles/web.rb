@@ -9,7 +9,8 @@ default_attributes({
 })
 
 run_list([
-  "role[base]",
+  "recipe[main]",
+  "recipe[logrotate]",
   "recipe[nginx]",
   "recipe[nodejs]",
   "recipe[sites]",
