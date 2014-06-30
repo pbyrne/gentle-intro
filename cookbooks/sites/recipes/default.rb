@@ -22,6 +22,16 @@ node.domains.each do |domain|
     rotate 90 # keep 90 days of logs
   end
 
+  template "#{root}/public/index.html" do
+    source "index.html.erb"
+    user node.site_owner
+    group node.site_owner
+    not_if { File.exist? "#{root}/public/index.html" }
+    variables({
+      domain: domain,
+    })
+  end
+
   template "/etc/nginx/conf.d/#{domain}.conf" do
     source "nginx.conf.erb"
     user node.site_owner
