@@ -8,7 +8,6 @@ default_attributes({
 
 run_list([
   "recipe[main]",
-  "recipe[logrotate]",
   "recipe[nginx]",
   "recipe[sites]",
 ])

@@ -15,7 +15,6 @@ node.domains.each do |domain|
   end
 
   logrotate_app domain do
-    cookbook "logrotate"
     path "#{root}/log/*.log"
     frequency "daily"
     # make sure the new files are still owned by me
