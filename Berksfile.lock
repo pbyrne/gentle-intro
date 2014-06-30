@@ -3,7 +3,6 @@ DEPENDENCIES
   main
     path: cookbooks/main
   nginx
-  nodejs
   sites
     path: cookbooks/sites
 
@@ -21,10 +20,6 @@ GRAPH
     ohai (~> 2.0)
     runit (~> 1.2)
     yum-epel (~> 0.3)
-  nodejs (1.3.0)
-    apt (>= 0.0.0)
-    build-essential (>= 0.0.0)
-    yum (>= 0.0.0)
   ohai (2.0.1)
   rsyslog (1.12.2)
   runit (1.5.10)
